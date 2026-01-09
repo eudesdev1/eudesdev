@@ -1,0 +1,1799 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eudes Dev | Développeur Web & Créateur Visuel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7B68EE;
+            --primary-dark: #5D4FDB;
+            --primary-light: #9D8EFF;
+            --secondary: #25D366;
+            --secondary-dark: #128C7E;
+            --accent: #FF6B8B;
+            --dark: #1A1D2E;
+            --darker: #0F111A;
+            --light: #F8FAFF;
+            --gray: #8A8FB5;
+            --gray-light: #E4E7F5;
+            --success: #4CAF50;
+            --gradient-primary: linear-gradient(135deg, #7B68EE, #5D4FDB);
+            --gradient-secondary: linear-gradient(135deg, #25D366, #128C7E);
+            --gradient-accent: linear-gradient(135deg, #FF6B8B, #FF8E53);
+            --gradient-dark: linear-gradient(135deg, #1A1D2E, #0F111A);
+            --box-shadow: 0 15px 40px rgba(123, 104, 238, 0.15);
+            --box-shadow-hover: 0 25px 60px rgba(123, 104, 238, 0.25);
+            --whatsapp-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+            --whatsapp-shadow-hover: 0 15px 40px rgba(37, 211, 102, 0.4);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            --border-radius: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.2rem;
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 4rem;
+        }
+
+        h2 .highlight {
+            color: var(--primary);
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--dark);
+        }
+
+        h4 {
+            font-size: 1.3rem;
+            color: var(--primary);
+        }
+
+        p {
+            margin-bottom: 1.8rem;
+            color: var(--gray);
+            font-size: 1.05rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 120px 0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-secondary);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn:hover:before {
+            left: 0;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            color: white;
+        }
+
+        .btn-whatsapp {
+            background: var(--gradient-secondary);
+            color: white;
+            box-shadow: var(--whatsapp-shadow);
+        }
+
+        .btn-whatsapp:hover {
+            box-shadow: var(--whatsapp-shadow-hover);
+            transform: translateY(-5px);
+        }
+
+        .btn-whatsapp i {
+            font-size: 1.2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 6px;
+            background: var(--gradient-primary);
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 25px 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 18px 0;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 15px 40px rgba(123, 104, 238, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .logo i {
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 1.05rem;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            bottom: 0;
+            left: 0;
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after,
+        .nav-links a.active:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--dark);
+            background: var(--gradient-light);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--box-shadow);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 180px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f5f7ff 0%, #f0f2ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(37, 211, 102, 0.1));
+            top: -300px;
+            right: -200px;
+            z-index: 0;
+        }
+
+        .hero:after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.1), rgba(93, 79, 219, 0.1));
+            bottom: -200px;
+            left: -100px;
+            z-index: 0;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            margin-bottom: 1.8rem;
+            animation: fadeUp 1s ease;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            animation: fadeUp 1s ease 0.2s both;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 3rem;
+            animation: fadeUp 1s ease 0.4s both;
+        }
+
+        .badge {
+            padding: 10px 20px;
+            background: white;
+            border-radius: 50px;
+            font-weight: 500;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .badge:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .badge i {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeUp 1s ease 0.6s both;
+        }
+
+        .hero-image {
+            position: relative;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow-hover);
+            position: relative;
+            z-index: 2;
+        }
+
+        .floating-element {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-primary);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: var(--box-shadow);
+            z-index: 3;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .element-1 {
+            top: -30px;
+            right: 40px;
+            background: var(--gradient-secondary);
+            animation-delay: 0.2s;
+        }
+
+        .element-2 {
+            bottom: 60px;
+            left: -30px;
+            background: var(--gradient-accent);
+            animation-delay: 0.5s;
+        }
+
+        .element-3 {
+            bottom: 30px;
+            right: -20px;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            animation-delay: 0.8s;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            margin-bottom: 2rem;
+        }
+
+        .skills {
+            margin-top: 3rem;
+        }
+
+        .skill-item {
+            margin-bottom: 2rem;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+        }
+
+        .skill-bar {
+            height: 12px;
+            background: var(--gray-light);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 6px;
+            width: 0;
+            transition: width 2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-progress:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        /* Services Section */
+        .services {
+            background: linear-gradient(135deg, #f5f7ff 0%, #f0f2ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 3rem;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .service-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
+            z-index: 2;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        .service-icon {
+            width: 90px;
+            height: 90px;
+            background: var(--gradient-primary);
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            color: white;
+            font-size: 2.2rem;
+            transform: rotate(45deg);
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-icon {
+            transform: rotate(0deg);
+            background: var(--gradient-secondary);
+        }
+
+        /* Portfolio Section */
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 4rem;
+        }
+
+        .filter-btn {
+            padding: 12px 30px;
+            background: transparent;
+            border: 2px solid var(--gray-light);
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--gradient-primary);
+            border-color: transparent;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .portfolio-item {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            background: white;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        .portfolio-img {
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .portfolio-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover .portfolio-img img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(26, 29, 46, 0.9), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 2rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-info {
+            padding: 2rem;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            padding: 6px 15px;
+            background: var(--gray-light);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .tag.html { background: #E34F26; color: white; }
+        .tag.css { background: #1572B6; color: white; }
+        .tag.js { background: #F7DF1E; color: #333; }
+        .tag.figma { background: #F24E1E; color: white; }
+        .tag.canva { background: #00C4CC; color: white; }
+        .tag.capcut { background: #FF6B8B; color: white; }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #f5f7ff 0%, #f0f2ff 100%);
+            position: relative;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+        }
+
+        .contact-info {
+            width: 100%;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 1.5rem;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 18px 25px;
+            border: 2px solid var(--gray-light);
+            border-radius: 15px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: white;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(123, 104, 238, 0.1);
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .form-message {
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 1rem;
+            display: none;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .form-message.success {
+            background: rgba(37, 211, 102, 0.1);
+            color: #128C7E;
+            border: 1px solid var(--secondary);
+        }
+
+        .form-message.error {
+            background: rgba(244, 67, 54, 0.1);
+            color: #C62828;
+            border: 1px solid #F44336;
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: var(--whatsapp-shadow);
+            z-index: 999;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: var(--whatsapp-shadow-hover);
+        }
+
+        .whatsapp-float .tooltip {
+            position: absolute;
+            right: 80px;
+            background: var(--dark);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: var(--transition);
+            pointer-events: none;
+        }
+
+        .whatsapp-float:hover .tooltip {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* WhatsApp CTA Section */
+        .whatsapp-cta {
+            text-align: center;
+            padding: 4rem;
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.05), rgba(18, 140, 126, 0.05));
+            border-radius: var(--border-radius);
+            margin-top: 4rem;
+            border: 2px solid rgba(37, 211, 102, 0.2);
+        }
+
+        .whatsapp-cta h3 {
+            color: #128C7E;
+            margin-bottom: 1rem;
+        }
+
+        .whatsapp-cta p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--gradient-dark);
+            color: white;
+            padding: 80px 0 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer:before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), transparent);
+            top: -150px;
+            right: -150px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 4rem;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #fff, var(--primary-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .footer-links h3,
+        .footer-social h3 {
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-light);
+            transform: translateX(10px);
+        }
+
+        .footer-links a i {
+            width: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+            }
+            50% {
+                box-shadow: 0 10px 40px rgba(37, 211, 102, 0.5);
+            }
+            100% {
+                box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            h1 {
+                font-size: 3.2rem;
+            }
+            
+            h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content,
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+            
+            .hero {
+                padding-top: 150px;
+                text-align: center;
+            }
+            
+            .hero-btns {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                width: 100%;
+                flex-direction: column;
+                background: white;
+                padding: 3rem;
+                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+                z-index: 999;
+                border-radius: 0 0 30px 30px;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.4rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 90px 0;
+            }
+            
+            .btn {
+                padding: 14px 28px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .whatsapp-float {
+                width: 60px;
+                height: 60px;
+                font-size: 1.7rem;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.7rem;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .hero-btns .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .whatsapp-cta {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/+2290199892572?text=Bonjour%20Eudes,%20je%20suis%20intéressé%20par%20vos%20services%20de%20développement%20web" 
+       target="_blank" 
+       class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+        <span class="tooltip">Discutons sur WhatsApp</span>
+    </a>
+
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <i class="fas fa-code"></i>Eudes<span>Dev</span>
+                </a>
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" class="active">Accueil</a></li>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="https://wa.me/+2290199892572" target="_blank" class="btn-whatsapp" style="padding: 10px 20px; margin-top: -5px;">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Créateur d'Expériences Digitales Exceptionnelles</h1>
+                    <p>Développeur web full-stack & designer créatif spécialisé dans la création de sites web performants, designs innovants et contenus visuels engageants. Je transforme vos idées en réalité digitale.</p>
+                    
+                    <div class="hero-badges">
+                        <div class="badge">
+                            <i class="fab fa-figma"></i>Figma Expert
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-paint-brush"></i>Canva 
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-video"></i>CapCut 
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-code"></i>Full-Stack
+                        </div>
+                    </div>
+                    
+                    <div class="hero-btns">
+                        <a href="#portfolio" class="btn">
+                            <i class="fas fa-eye"></i> Voir mes projets
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <i class="fas fa-paper-plane"></i> Discutons projet
+                        </a>
+                        <a href="https://wa.me/+2290199892572" target="_blank" class="btn btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i> WhatsApp Direct
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Développeur web créatif">
+                    <div class="floating-element element-1">
+                        <i class="fab fa-figma"></i>
+                    </div>
+                    <div class="floating-element element-2">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <div class="floating-element element-3">
+                        <i class="fas fa-video"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>À propos de <span class="highlight">moi</span></h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Passionné par le code et le design visuel</h3>
+                    <p>Je m'appelle Eudes, développeur web full-stack avec plus de 3 ans d'expérience. Ma particularité : allier expertise technique (HTML, CSS, JavaScript, React, Node.js) et compétences créatives en design (Figma, Canva, CapCut).</p>
+                    <p>Je crée des expériences digitales complètes : du site web performant au design d'interface, en passant par la création de contenus visuels engageants pour les réseaux sociaux. Chaque projet est une opportunité d'innover et de dépasser les attentes.</p>
+                    
+                    <div class="skills">
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Développement Frontend</span>
+                                <span>98%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="98"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>UI/UX Design (Figma)</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Design Visuel (Canva)</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="92"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Montage Vidéo (CapCut)</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="web.jpeg" alt="Développeur web professionnel" style="width:100%; border-radius:var(--border-radius); box-shadow: var(--box-shadow-hover);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mes <span class="highlight">Services</span></h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Développement Web</h3>
+                    <p>Sites vitrines, e-commerce, applications web sur mesure. Technologies modernes : HTML5, CSS3, JavaScript, React, Node.js. Performance et SEO optimisés.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fab fa-figma"></i>
+                    </div>
+                    <h3>UI/UX Design Figma</h3>
+                    <p>Design d'interfaces utilisateur, prototypes interactifs, design systems, maquettes responsives. Expérience utilisateur optimale et design moderne.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Design Graphique Canva</h3>
+                    <p>Création de visuels professionnels : logos, bannières réseaux sociaux, présentations, cartes de visite, supports marketing. Identité visuelle cohérente.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Montage Vidéo CapCut</h3>
+                    <p>Création et montage de vidéos engageantes pour réseaux sociaux, publicités, présentations. Effets professionnels, transitions dynamiques, optimisation pour chaque plateforme.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mon <span class="highlight">Portfolio</span></h2>
+            </div>
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">Tous les projets</button>
+                <button class="filter-btn" data-filter="web">Développement Web</button>
+                <button class="filter-btn" data-filter="design">Design Figma</button>
+                <button class="filter-btn" data-filter="canva">Design Canva</button>
+                <button class="filter-btn" data-filter="capcut">Vidéo CapCut</button>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-img">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Site e-commerce">
+                        <div class="portfolio-overlay">
+                            <a href="#" class="btn">Voir le projet</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Plateforme E-commerce Luxe</h3>
+                        <p>Site e-commerce complet avec système de paiement, gestion des stocks et dashboard admin.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag html">HTML5</span>
+                            <span class="tag css">CSS3</span>
+                            <span class="tag js">JavaScript</span>
+                            <span class="tag figma">Figma</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="design">
+                    <div class="portfolio-img">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1064&q=80" alt="Design d'application">
+                        <div class="portfolio-overlay">
+                            <a href="#" class="btn">Voir le projet</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Application Fitness Mobile</h3>
+                        <p>UI/UX design complet avec prototype interactif et design system sur Figma.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag figma">Figma</span>
+                            <span class="tag canva">Canva</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="canva capcut">
+                    <div class="portfolio-img">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Contenu réseaux sociaux">
+                        <div class="portfolio-overlay">
+                            <a href="#" class="btn">Voir le projet</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Campagne Réseaux Sociaux</h3>
+                        <p>Création de visuels Canva et montage vidéo CapCut pour une campagne Instagram/TikTok.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag canva">Canva </span>
+                            <span class="tag capcut">CapCut </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section - Version WhatsApp -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Discutons sur <span class="highlight">WhatsApp</span></h2>
+            </div>
+            
+            <div class="contact-content">
+                <!-- Colonne 1 : Informations de contact -->
+                <div class="contact-info">
+                    <h3>Contactez-moi directement sur WhatsApp</h3>
+                    <p>Pour une réponse rapide et personnalisée, discutons de votre projet sur WhatsApp. Je suis disponible pour échanger et vous proposer la meilleure solution.</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon" style="background: var(--gradient-secondary);">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <h4>WhatsApp Direct</h4>
+                            <p style="font-size: 1.2rem; font-weight: 600; color: var(--dark);">+229 01 99 89 25 72</p>
+                            <small style="color: var(--secondary-dark);">✅ Réponse garantie en moins de 2h</small>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email Professionnel</h4>
+                            <p>mahuclotiktok@gmail.com</p>
+                            <small>Pour les documents et devis détaillés</small>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Bureau & Télétravail</h4>
+                            <p>Bénin, Cotonou</p>
+                            <small>Disponible pour des projets internationaux</small>
+                        </div>
+                    </div>
+                    
+                    <!-- Grand bouton WhatsApp -->
+                    <div style="margin-top: 3rem;">
+                        <a href="https://wa.me/+2290199892572" target="_blank" class="btn btn-whatsapp" style="width: 100%; justify-content: center; padding: 20px; font-size: 1.1rem;">
+                            <i class="fab fa-whatsapp"></i> Discuter maintenant sur WhatsApp
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Colonne 2 : Formulaire WhatsApp -->
+                <div class="contact-form">
+                    <h3>Préparons notre discussion</h3>
+                    <p>Remplissez ce formulaire pour que je sois mieux préparé à répondre à vos besoins :</p>
+                    
+                    <div id="formMessage" class="form-message"></div>
+                    
+                    <form id="whatsappForm">
+                        <div class="form-group">
+                            <input type="text" id="clientName" placeholder="Votre nom *" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select id="serviceType" required>
+                                <option value="">Type de service recherché *</option>
+                                <option value="Développement Web">Développement Web</option>
+                                <option value="UI/UX Design (Figma)">UI/UX Design (Figma)</option>
+                                <option value="Design Graphique (Canva)">Design Graphique (Canva)</option>
+                                <option value="Montage Vidéo (CapCut)">Montage Vidéo (CapCut)</option>
+                                <option value="Plusieurs services">Plusieurs services</option>
+                                <option value="Autre">Autre (précisez dans le message)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="text" id="projectSubject" placeholder="Sujet de votre projet *" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea id="projectDescription" placeholder="Décrivez brièvement votre projet *" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select id="urgencyLevel">
+                                <option value="">Niveau d'urgence (optionnel)</option>
+                                <option value="Urgent (moins d'une semaine)">Urgent (moins d'une semaine)</option>
+                                <option value="Dans les 2-3 semaines">Dans les 2-3 semaines</option>
+                                <option value="Dans le mois">Dans le mois</option>
+                                <option value="Simple consultation">Simple consultation</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-whatsapp" style="width: 100%; justify-content: center; padding: 20px; font-size: 1.1rem;">
+                            <i class="fab fa-whatsapp"></i> Envoyer sur WhatsApp
+                        </button>
+                        
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--gray); text-align: center;">
+                            <i class="fas fa-clock"></i> Réponse garantie sous 2 heures
+                        </p>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Section CTA WhatsApp -->
+            <div class="whatsapp-cta">
+                <h3><i class="fab fa-whatsapp"></i> Pourquoi discuter sur WhatsApp ?</h3>
+                <p>WhatsApp me permet de vous répondre plus rapidement, de partager des exemples en direct et d'avoir une conversation plus fluide sur votre projet.</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <div style="text-align: center;">
+                        <div style="width: 60px; height: 60px; background: rgba(37, 211, 102, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: var(--secondary-dark);">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h4 style="color: var(--secondary-dark);">Rapide</h4>
+                        <p style="font-size: 0.95rem;">Réponse en moins de 2h</p>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div style="width: 60px; height: 60px; background: rgba(37, 211, 102, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: var(--secondary-dark);">
+                            <i class="fas fa-images"></i>
+                        </div>
+                        <h4 style="color: var(--secondary-dark);">Visuel</h4>
+                        <p style="font-size: 0.95rem;">Partage d'images et vidéos</p>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div style="width: 60px; height: 60px; background: rgba(37, 211, 102, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: var(--secondary-dark);">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h4 style="color: var(--secondary-dark);">Direct</h4>
+                        <p style="font-size: 0.95rem;">Conversation en temps réel</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 2rem;">
+                    <a href="https://wa.me/+2290199892572" target="_blank" class="btn btn-whatsapp" style="font-size: 1.1rem; padding: 16px 40px;">
+                        <i class="fab fa-whatsapp"></i> Commencer la discussion maintenant
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">EudesDev</div>
+                    <p>Développeur web full-stack & créateur visuel spécialisé dans la création d'expériences digitales complètes et engageantes.</p>
+                    <div style="margin-top: 2rem;">
+                        <a href="https://wa.me/+2290199892572" target="_blank" class="btn btn-whatsapp" style="padding: 12px 25px;">
+                            <i class="fab fa-whatsapp"></i> Contact WhatsApp
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Liens Rapides</h3>
+                    <ul>
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> À propos</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="#portfolio"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Mes Services</h3>
+                    <ul>
+                        <li><a href="#services"><i class="fas fa-code"></i> Développement Web</a></li>
+                        <li><a href="#services"><i class="fab fa-figma"></i> UI/UX Design (Figma)</a></li>
+                        <li><a href="#services"><i class="fas fa-paint-brush"></i> Design Graphique (Canva)</a></li>
+                        <li><a href="#services"><i class="fas fa-video"></i> Montage Vidéo (CapCut)</a></li>
+                        <li><a href="#contact"><i class="fas fa-star"></i> Solution Complète</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-social">
+                    <h3>Me Contacter</h3>
+                    <p>Pour une réponse rapide, WhatsApp est le meilleur moyen :</p>
+                    
+                    <div style="margin-top: 1.5rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 15px;">
+                        <h4 style="color: #25D366; margin-bottom: 0.5rem;">
+                            <i class="fab fa-whatsapp"></i> WhatsApp Direct
+                        </h4>
+                        <a href="https://wa.me/+2290199892572" target="_blank" style="color: white; font-weight: 600; display: block; margin-top: 10px; font-size: 1.1rem;">
+                            +229 01 99 89 25 72
+                        </a>
+                        <small style="color: rgba(255, 255, 255, 0.7);">Réponse sous 2h</small>
+                    </div>
+                    
+                    <div class="social-icons" style="margin-top: 2rem;">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-behance"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 EudesDev. Tous droits réservés. | Développeur Web & Créateur Visuel</p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">Spécialisé en HTML/CSS/JS, Figma, Canva & CapCut</p>
+                <p style="margin-top: 5px; font-size: 0.9rem;">
+                    <i class="fab fa-whatsapp" style="color: #25D366;"></i> 
+                    Contact préféré : WhatsApp
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.querySelector('i').classList.toggle('fa-bars');
+            menuToggle.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.querySelector('i').classList.add('fa-bars');
+                menuToggle.querySelector('i').classList.remove('fa-times');
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            // Active navigation link based on scroll position
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a:not(.btn-whatsapp)');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 250)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Portfolio filtering with enhanced animation
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                portfolioItems.forEach((item, index) => {
+                    const categories = item.getAttribute('data-category').split(' ');
+                    
+                    if (filterValue === 'all' || categories.includes(filterValue)) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        }, index * 100);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+        
+        // Animate skill bars on scroll
+        function animateSkills() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                bar.style.width = width + '%';
+            });
+        }
+        
+        // Check if skills section is in view
+        function checkScroll() {
+            const skillsSection = document.querySelector('.skills');
+            if (skillsSection) {
+                const sectionPosition = skillsSection.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (sectionPosition < screenPosition) {
+                    animateSkills();
+                }
+            }
+        }
+        
+        window.addEventListener('scroll', checkScroll);
+        // Initial check
+        checkScroll();
+        
+        // WHATSAPP FORM SUBMISSION
+        const whatsappForm = document.getElementById('whatsappForm');
+        const formMessage = document.getElementById('formMessage');
+        
+        whatsappForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('clientName').value;
+            const service = document.getElementById('serviceType').value;
+            const subject = document.getElementById('projectSubject').value;
+            const description = document.getElementById('projectDescription').value;
+            const urgency = document.getElementById('urgencyLevel').value;
+            
+            // Validation
+            if (!name || !service || !subject || !description) {
+                formMessage.textContent = '⚠️ Veuillez remplir tous les champs obligatoires (*).';
+                formMessage.className = 'form-message error';
+                formMessage.style.display = 'block';
+                return;
+            }
+            
+            // Create WhatsApp message
+            let whatsappMessage = `Bonjour Eudes,%0A%0A`;
+            whatsappMessage += `Je m'appelle *${name}*.%0A%0A`;
+            whatsappMessage += `*Service recherché :* ${service}%0A`;
+            whatsappMessage += `*Sujet du projet :* ${subject}%0A%0A`;
+            whatsappMessage += `*Description du projet :*%0A${description}%0A%0A`;
+            
+            if (urgency) {
+                whatsappMessage += `*Niveau d'urgence :* ${urgency}%0A%0A`;
+            }
+            
+            whatsappMessage += `(Message envoyé depuis votre portfolio)%0A%0A`;
+            whatsappMessage += `Je reste disponible pour en discuter davantage.`;
+            
+            // Encode the message for URL
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            
+            // Create WhatsApp URL
+            const phoneNumber = '2290199892572';
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            
+            // Show success message
+            formMessage.innerHTML = '✅ Redirection vers WhatsApp... <i class="fas fa-spinner fa-spin"></i>';
+            formMessage.className = 'form-message success';
+            formMessage.style.display = 'block';
+            
+            // Open WhatsApp in new tab after a short delay
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+                
+                // Update message
+                formMessage.innerHTML = '✅ WhatsApp ouvert ! Vous pouvez maintenant m\'envoyer votre message directement.';
+                
+                // Reset form after 2 seconds
+                setTimeout(() => {
+                    whatsappForm.reset();
+                    formMessage.style.display = 'none';
+                }, 3000);
+                
+            }, 1500);
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Floating elements animation
+        function animateFloatingElements() {
+            const elements = document.querySelectorAll('.floating-element');
+            elements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.3}s`;
+            });
+        }
+        
+        // Initialize animations
+        animateFloatingElements();
+        
+        // WhatsApp button interaction
+        const whatsappBtn = document.querySelector('.whatsapp-float');
+        whatsappBtn.addEventListener('click', (e) => {
+            // Track click event
+            console.log('WhatsApp float button clicked');
+        });
+        
+        // Auto-scroll to contact section if URL has #contact
+        if (window.location.hash === '#contact') {
+            setTimeout(() => {
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                    window.scrollTo({
+                        top: contactSection.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 500);
+        }
+    </script>
+</body>
+</html>
